@@ -1,19 +1,20 @@
-<!-- {% extends 'base.html' %} 
-{% block content %} -->
+{% extends 'base.html' %} 
+{% block content %}
 <!-- {% csrf_token %}
 {{original_text}}
 {{output_text}} -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <div class="container">
-    <form action="{% url 'get_translation' %}" method="POST">
+    <form action="{% url 'translator_view' %}" method="POST">
+        {% csrf_token %}
         <div class="row">
             <div class="col-sm-6 mt-3 left">
-                <textarea class="form-control" name="my_textarea" id=""  rows="3"></textarea>
+                <textarea class="form-control" name="my_textarea" id=""  rows="3">{{original_text}}</textarea>
             </div>
             <div class="col-sm-6 mt-3 left">
 
-<textarea class="form-control" rows="3"></textarea>
+<textarea class="form-control" rows="3">{{output_text}}</textarea>
 <input class="btn btn-primary ml-3 mt-3" type="submit" value="Submit">
             </div>
         </div>
@@ -21,4 +22,4 @@
     </form>
 </div>
 
-<!-- {% endblock content %} -->
+{% endblock content %}
